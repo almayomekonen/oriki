@@ -2,6 +2,7 @@ import { useState } from "react";
 import CourseGoal from "./components/CourseGoal";
 import Header from "./components/Header";
 import GoalsList from "./components/GoalsList";
+import Form from "./components/Form";
 
 type CourseGoal = {
   description: string;
@@ -12,16 +13,20 @@ type CourseGoal = {
 export default function App() {
   const [goals, setGoals] = useState<CourseGoal[]>([]);
 
-  function handleAddGoal() {
+  function handleAddGoal(goal: string, summary: string) {
     setGoals((prevGoals) => {
       const newGoal: CourseGoal = {
-        title: "Letsssss Goooooo 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥",
-        description: "Ts is the besttttt 🔥🔥🔥🔥🔥🔥🔥",
+        title: goal,
+        description: summary,
         id: Math.random(),
       };
 
       return [...prevGoals, newGoal];
     });
+  }
+
+  function handleDeleteGoal(id: number) {
+    setGoals((prevGoals) => prevGoals.filter((goal) => goal.id !== id));
   }
 
   return (
@@ -31,7 +36,8 @@ export default function App() {
       </Header>
 
       <button onClick={handleAddGoal}>Add New Goal 💥🦾</button>
-      <GoalsList goals={goals} />
+      <GoalsList onDeleteGoal={handleDeleteGoal} goals={goals} />
+      <Form onAddGoal={handleAddGoal} />
     </main>
   );
 }
