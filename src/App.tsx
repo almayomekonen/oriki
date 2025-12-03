@@ -35,7 +35,6 @@ export default function App() {
         <h1>Learning React + Type Script</h1>
       </Header>
 
-      <button onClick={handleAddGoal}>Add New Goal 💥🦾</button>
       <GoalsList onDeleteGoal={handleDeleteGoal} goals={goals} />
       <Form onAddGoal={handleAddGoal} />
     </main>

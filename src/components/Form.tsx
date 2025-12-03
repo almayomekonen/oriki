@@ -18,19 +18,17 @@ export default function Form({ onAddGoal }: FormProps) {
   }
 
   return (
-    <form onClick={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <p>
-        <label htmlFor="">Your Goal</label>
-        <input type="text" ref={goal} />
+        <label htmlFor="goal">Your Goal</label>
+        <input id="goal" type="text" ref={goal} />
       </p>
       <p>
-        <label htmlFor="">Short Summary</label>
-        <input type="text" ref={summary} />
+        <label htmlFor="summary">Short Summary</label>
+        <input id="summary" type="text" ref={summary} />
       </p>
 
-      <p>
-        <button>Add The Damn Goal</button>
-      </p>
+      <button>Add The Damn Goal</button>
     </form>
   );
 }
